@@ -5,6 +5,40 @@ A biomedical calculator for the body mass index (BMI) and other parameters.
 
 ![Alt text](https://github.com/ElArquitectorgo/bmicalc/blob/main/doc/prueba.drawio.png)
 
+# User stories
+User story 1
+
+As a user 
+I want to compute the IMC of a given height and weigth 
+so that I can know the result
+
+Scenario: Computing the IMC of 70 cm and 1.70 kg
+Given I have an IMC calculator
+When I compute the IMC of 70 and 1.70
+Then The system returns 24.22
+
+User story 2
+
+As a user 
+I want to know my health CATEGORY given an imc
+so that I can know my level of health
+
+Scenario: Computing the CATEGORY of 25
+Given I have an imc CATEGORY calculator
+When I compute the CATEGORY of 25
+Then The system returns overweight
+
+User story 3
+
+As a user 
+I want to know if i have ABDOMINALOBESITY given a waistCircumference and gender
+so that I can know if I need to do something
+
+Scenario: Computing the ABDOMINALOBESITY of 95 cm and M
+Given I have an ABDOMINALOBESITY calculator
+When I compute the ABDOMINALOBESITY of 95 and M
+Then The system returns true
+
 # Especificación caso de uso
 ## Caso de uso: solicitar ayuda.
 **Actor primario:** cliente.  
