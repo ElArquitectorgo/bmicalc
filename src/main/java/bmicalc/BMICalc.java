@@ -15,10 +15,10 @@ public interface BMICalc {
 	
 	/**
 	 * Categorize a person according to the BMI category:
-	 *   - UNDERWEIGHT for a BMI below 18.5
-	 *   - NORMAL for a BMI between 18.5 and 24.9
-	 *   - OVERWEIGHT for a BMI between 25.0 and 29.9
-	 *   - OBESE for a BMI above or equal 30.0
+	 *   - underweight for a bmi below 18.5
+	 *   - normal for a bmi between 18.5 and 24.9
+	 *   - overweight for a bmi between 25.0 and 29.9
+	 *   - obese for a bmi above or equal 30.0
 	 *   
 	 * @param bmi Body Mass Index (BMI) value.
 	 * @return	  String representing the BMI category.
