@@ -25,7 +25,7 @@ public class BMICalcImpl implements BMICalc {
 		if (waistCircumference <= 0) throw new IllegalArgumentException("No puedes introducir valores nulos o negativos");
 		if (gender != 'M' && gender != 'F') throw new IllegalArgumentException("Género mal especificado, se esperaba 'M' o 'F'");
 
-		boolean hasObesity = (gender == 'M' && waistCircumference > 90 || gender == 'F' && waistCircumference > 80) ? true:false;
+		boolean hasObesity = (gender == 'M' && waistCircumference > 90 || gender == 'F' && waistCircumference > 80);
 		return hasObesity;
 	}
 
