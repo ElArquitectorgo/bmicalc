@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.JOptionPane;
+
 import bmicalc.BMICalcImpl;
 
 public class Controlador implements ActionListener, MouseListener {
@@ -25,7 +27,10 @@ public class Controlador implements ActionListener, MouseListener {
 		else if (comando.equals("minusOne")) updateBMIResult(-1);
 		else if (comando.equals("plusOne")) updateBMIResult(1);
 		else if (comando.equals("plusFive")) updateBMIResult(5);
-		else if (comando.equals("bmiHelp")) vista.updateMassLabel(-1);
+		else if (comando.equals("bmiHelp")) JOptionPane.showMessageDialog(vista,
+                "Pulsa en los botones para añadir o restar kilos.\n"
+                + "Mueve el deslizador para ajustar tu altura.\n"
+                + "El resultado se muestra junto a su categoría.\n");
 		else if (comando.equals("categoryHelp")) vista.updateMassLabel(-1);
 		else if (comando.equals("abdominalHelp")) vista.updateMassLabel(-1);
 		
@@ -39,6 +44,7 @@ public class Controlador implements ActionListener, MouseListener {
 		double height = vista.getBMISlider();
 		double bmi = modelo.bmi(mass, height);
 		vista.setBMIResult(bmi);
+		vista.updateCategoryResult(modelo.category(bmi));
 	}
 	
 	public void updateCategoryResult() {
