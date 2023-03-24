@@ -3,6 +3,8 @@
 # BMI calculator
 A biomedical calculator for the body mass index (BMI) and other parameters.
 
+![Alt text](https://github.com/ElArquitectorgo/bmicalc/blob/main/doc/gui.png)
+
 ![Alt text](https://github.com/ElArquitectorgo/bmicalc/blob/main/doc/prueba.drawio.png)
 
 # User stories
