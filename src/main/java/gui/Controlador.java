@@ -28,6 +28,9 @@ public class Controlador implements ActionListener, MouseListener {
 		else if (comando.equals("bmiHelp")) vista.updateMassLabel(-1);
 		else if (comando.equals("categoryHelp")) vista.updateMassLabel(-1);
 		else if (comando.equals("abdominalHelp")) vista.updateMassLabel(-1);
+		
+		else if (comando.equals("male")) updateRadioButtons("male");
+		else if (comando.equals("female")) updateRadioButtons("female");
 	}
 	
 	public void updateBMIResult(int n) {
@@ -42,6 +45,18 @@ public class Controlador implements ActionListener, MouseListener {
 		int bmi = vista.getCategoryBMI();
 		String category = modelo.category(bmi);
 		vista.updateCategoryResult(category);
+	}
+	
+	public void updateRadioButtons(String button) {
+		vista.setRadioButton(button);
+		updateObesityResult();
+	}
+	
+	public void updateObesityResult() {
+		char gender = vista.getRadioButton();
+		double waistCircumference = vista.getObesitySlider();
+		boolean result = modelo.abdominalObesity(waistCircumference, gender);
+		vista.updateObesityResult(result);
 	}
 
 	@Override
@@ -61,6 +76,7 @@ public class Controlador implements ActionListener, MouseListener {
 		String component = e.getComponent().getName();
 		if (component == "bmiSlider") updateBMIResult(0);
 		else if (component == "categorySlider") updateCategoryResult();
+		else if (component == "obesitySlider") updateObesityResult();
 	}
 
 	@Override

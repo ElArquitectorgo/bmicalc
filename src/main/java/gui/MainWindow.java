@@ -38,7 +38,11 @@ public class MainWindow extends JFrame {
 	private JLabel categoryResult;
 	private JSlider categorySlider;
 	private JButton categoryHelpButton;
-	private JButton abdominalHelpButton;
+	
+	private JRadioButton maleButton;
+	private JRadioButton femaleButton;
+	private JSlider obesitySlider;
+	private JButton obesityHelpButton;
 	private JLabel obesityResult;
 
 	/**
@@ -46,7 +50,7 @@ public class MainWindow extends JFrame {
 	 */
 	public MainWindow() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 350, 300);
+		setBounds(100, 100, 300, 272);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -62,7 +66,7 @@ public class MainWindow extends JFrame {
 		JLabel lblNewLabel = new JLabel("BMI:");
 		panel.add(lblNewLabel);
 		
-		bmiResult = new JLabel("20");
+		bmiResult = new JLabel("22.86");
 		bmiResult.setFont(new Font("Tahoma", Font.PLAIN, 32));
 		bmiResult.setHorizontalAlignment(SwingConstants.CENTER);
 		panel.add(bmiResult);
@@ -89,9 +93,9 @@ public class MainWindow extends JFrame {
 		panel.add(panel_4);
 		
 		bmiSlider = new JSlider();
-		bmiSlider.setMinimum(100);
-		bmiSlider.setValue(175);
 		bmiSlider.setMaximum(250);
+		bmiSlider.setValue(175);
+		bmiSlider.setMinimum(100);
 		panel_4.add(bmiSlider);
 		
 		JLabel bmiSliderLabel = new JLabel(String.valueOf((double) bmiSlider.getValue() / 100));
@@ -113,7 +117,7 @@ public class MainWindow extends JFrame {
 		JLabel lblNewLabel_4 = new JLabel("Category:");
 		panel_1.add(lblNewLabel_4);
 		
-		categoryResult = new JLabel("Obese");
+		categoryResult = new JLabel("Overweight");
 		categoryResult.setFont(new Font("Tahoma", Font.PLAIN, 32));
 		categoryResult.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(categoryResult);
@@ -123,8 +127,8 @@ public class MainWindow extends JFrame {
 		
 		categorySlider = new JSlider();
 		categorySlider.setMinimum(10);
-		categorySlider.setValue(30);
-		categorySlider.setMaximum(50);
+		categorySlider.setValue(25);
+		categorySlider.setMaximum(40);
 		panel_5.add(categorySlider);
 		
 		JLabel categorySliderLabel = new JLabel(String.valueOf(categorySlider.getValue()));
@@ -146,7 +150,7 @@ public class MainWindow extends JFrame {
 		JLabel lblNewLabel_6 = new JLabel("Obesity:");
 		panel_2.add(lblNewLabel_6);
 		
-		obesityResult = new JLabel("No");
+		obesityResult = new JLabel("Yes");
 		obesityResult.setHorizontalAlignment(SwingConstants.CENTER);
 		obesityResult.setFont(new Font("Tahoma", Font.PLAIN, 32));
 		panel_2.add(obesityResult);
@@ -157,28 +161,35 @@ public class MainWindow extends JFrame {
 		JLabel lblNewLabel_7 = new JLabel("Género:");
 		panel_6.add(lblNewLabel_7);
 		
-		JRadioButton maleButton = new JRadioButton("M");
+		maleButton = new JRadioButton("M");
+		maleButton.setSelected(true);
 		panel_6.add(maleButton);
 		
-		JRadioButton femaleButton = new JRadioButton("F");
+		femaleButton = new JRadioButton("F");
 		panel_6.add(femaleButton);
 		
 		JPanel panel_7 = new JPanel();
 		panel_2.add(panel_7);
 		
-		JSlider abdominalSlider = new JSlider();
-		abdominalSlider.setValue(100);
-		abdominalSlider.setMaximum(150);
-		abdominalSlider.setMinimum(50);
-		panel_7.add(abdominalSlider);
+		obesitySlider = new JSlider();
+		obesitySlider.setValue(100);
+		obesitySlider.setMaximum(150);
+		obesitySlider.setMinimum(50);
+		panel_7.add(obesitySlider);
 		
-		JLabel abdominalSliderLabel = new JLabel("70 cm");
-		panel_7.add(abdominalSliderLabel);
+		JLabel obesitySliderLabel = new JLabel(String.valueOf(obesitySlider.getValue()));
+		panel_7.add(obesitySliderLabel);
 		
-		abdominalHelpButton = new JButton("Help");
-		panel_2.add(abdominalHelpButton);
+		obesitySlider.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				obesitySliderLabel.setText(String.valueOf(obesitySlider.getValue()));
+			}
+		});
 		
-		pack();
+		obesityHelpButton = new JButton("Help");
+		panel_2.add(obesityHelpButton);
+		
+		//pack();
 		setVisible(true);
 	}
 
@@ -198,14 +209,20 @@ public class MainWindow extends JFrame {
 		bmiHelpButton.setActionCommand("bmiHelp");
 		
 		// Category
+		maleButton.addActionListener(controlador);
+		maleButton.setActionCommand("male");
+		femaleButton.addActionListener(controlador);
+		femaleButton.setActionCommand("female");
 		categorySlider.setName("categorySlider");
 		categorySlider.addMouseListener(controlador);
 		categoryHelpButton.addActionListener(controlador);
 		categoryHelpButton.setActionCommand("categoryHelp");
 		
 		// Abdominal
-		abdominalHelpButton.addActionListener(controlador);
-		abdominalHelpButton.setActionCommand("abdominalHelp");
+		obesitySlider.addMouseListener(controlador);
+		obesitySlider.setName("obesitySlider");
+		obesityHelpButton.addActionListener(controlador);
+		obesityHelpButton.setActionCommand("abdominalHelp");
 	}
 	
 	public void updateMassLabel(int n) {
@@ -216,6 +233,16 @@ public class MainWindow extends JFrame {
 			massLabel.setText(String.valueOf(mass) + " kg");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void setRadioButton(String button) {
+		if (button == "male") {
+			maleButton.setSelected(true);
+			femaleButton.setSelected(false);
+		} else if (button == "female") {
+			maleButton.setSelected(false);
+			femaleButton.setSelected(true);
 		}
 	}
 	
@@ -237,6 +264,20 @@ public class MainWindow extends JFrame {
 	
 	public int getCategoryBMI() {
 		return categorySlider.getValue();
+	}
+	
+	public void updateObesityResult(boolean result) {
+		String str = result ? "Yes":"No";
+		obesityResult.setText(str);
+	}
+	
+	public char getRadioButton() {
+		if (maleButton.isSelected()) return 'M';
+		return 'F';
+	}
+	
+	public int getObesitySlider() {
+		return obesitySlider.getValue();
 	}
 
 }
