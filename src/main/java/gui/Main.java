@@ -2,6 +2,11 @@ package gui;
 import java.awt.EventQueue;
 import bmicalc.BMICalcImpl;
 
+// TO-DO
+/*
+ * Que la masa pueda tener valores intermedios
+ */
+
 public class Main {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

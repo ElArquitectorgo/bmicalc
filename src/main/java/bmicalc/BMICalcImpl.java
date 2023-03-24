@@ -12,10 +12,10 @@ public class BMICalcImpl implements BMICalc {
 		if (bmi <= 0) throw new IllegalArgumentException("BMI no puede ser nulo o negativo");
 		String category = "";
 		
-		if (bmi < 18.5) category = "underweight";
-		else if (18.5 <= bmi && bmi < 25) category = "normal";
-		else if (25 <= bmi && bmi < 30) category = "overweight";
-		else if (bmi >= 30) category = "obese";
+		if (bmi < 18.5) category = "Underweight";
+		else if (18.5 <= bmi && bmi < 25) category = "Normal";
+		else if (25 <= bmi && bmi < 30) category = "Overweight";
+		else if (bmi >= 30) category = "Obese";
 
 		return category;
 		
