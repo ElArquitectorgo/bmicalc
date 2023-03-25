@@ -36,14 +36,17 @@ public class MainWindow extends JFrame {
 	private JButton plusFiveButton;
 	private JLabel massLabel;
 	private JSlider bmiSlider;
+	private JLabel bmiSliderLabel;
 	private JButton bmiHelpButton;
 	
 	private JLabel categoryResult;
 	private JSlider categorySlider;
+	private JLabel categorySliderLabel;
 	
 	private JRadioButton maleButton;
 	private JRadioButton femaleButton;
 	private JSlider obesitySlider;
+	private JLabel obesitySliderLabel;
 	private JLabel obesityResult;
 	private JPanel panel_8;
 	private JLabel bmiCategoryLabel;
@@ -109,14 +112,8 @@ public class MainWindow extends JFrame {
 		bmiSlider.setMinimum(100);
 		panel_4.add(bmiSlider);
 		
-		JLabel bmiSliderLabel = new JLabel(String.valueOf((double) bmiSlider.getValue() / 100) + " m");
+		bmiSliderLabel = new JLabel(String.valueOf((double) bmiSlider.getValue() / 100) + " m");
 		panel_4.add(bmiSliderLabel);
-		
-		bmiSlider.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent e) {
-				bmiSliderLabel.setText(String.valueOf((double) bmiSlider.getValue() / 100) + " m");
-			}
-		});
 		
 		bmiHelpButton = new JButton("Help");
 		panel.add(bmiHelpButton);
@@ -142,14 +139,8 @@ public class MainWindow extends JFrame {
 		categorySlider.setMaximum(40);
 		panel_5.add(categorySlider);
 		
-		JLabel categorySliderLabel = new JLabel("IMC: 25");
+		categorySliderLabel = new JLabel("IMC: 25");
 		panel_5.add(categorySliderLabel);
-		
-		categorySlider.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent e) {
-				categorySliderLabel.setText("IMC: " + String.valueOf(categorySlider.getValue()));
-			}
-		});
 		
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Abdominal obesity", null, panel_2, null);
@@ -192,15 +183,9 @@ public class MainWindow extends JFrame {
 		obesitySlider.setMinimum(50);
 		panel_7.add(obesitySlider);
 		
-		JLabel obesitySliderLabel = new JLabel(String.valueOf(obesitySlider.getValue()) + " cm");
+		obesitySliderLabel = new JLabel(String.valueOf(obesitySlider.getValue()) + " cm");
 		obesitySliderLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		panel_7.add(obesitySliderLabel);
-		
-		obesitySlider.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent e) {
-				obesitySliderLabel.setText(String.valueOf(obesitySlider.getValue()) + " cm");
-			}
-		});
 		
 		//pack();
 		setVisible(true);
@@ -218,6 +203,9 @@ public class MainWindow extends JFrame {
 		plusFiveButton.setActionCommand("plusFive");
 		bmiSlider.setName("bmiSlider");
 		bmiSlider.addMouseListener(controlador);
+		
+		bmiSlider.addChangeListener(controlador);
+		
 		bmiHelpButton.addActionListener(controlador);
 		bmiHelpButton.setActionCommand("bmiHelp");
 		
@@ -228,12 +216,14 @@ public class MainWindow extends JFrame {
 		femaleButton.setActionCommand("female");
 		categorySlider.setName("categorySlider");
 		categorySlider.addMouseListener(controlador);
+		categorySlider.addChangeListener(controlador);
 		//categoryHelpButton.addActionListener(controlador);
 		//categoryHelpButton.setActionCommand("categoryHelp");
 		
 		// Abdominal
 		obesitySlider.addMouseListener(controlador);
 		obesitySlider.setName("obesitySlider");
+		obesitySlider.addChangeListener(controlador);
 		//obesityHelpButton.addActionListener(controlador);
 		//obesityHelpButton.setActionCommand("abdominalHelp");
 	}
@@ -293,6 +283,12 @@ public class MainWindow extends JFrame {
 	
 	public int getObesitySlider() {
 		return obesitySlider.getValue();
+	}
+	
+	public void updateSliderLabels() {
+		bmiSliderLabel.setText(String.valueOf((double) bmiSlider.getValue() / 100) + " m");
+		categorySliderLabel.setText("IMC: " + String.valueOf(categorySlider.getValue()));
+		obesitySliderLabel.setText(String.valueOf(obesitySlider.getValue()) + " cm");
 	}
 
 }
