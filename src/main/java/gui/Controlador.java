@@ -6,10 +6,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import bmicalc.BMICalcImpl;
 
-public class Controlador implements ActionListener, MouseListener {
+public class Controlador implements ActionListener, MouseListener, ChangeListener {
 	
 	private BMICalcImpl modelo;
 	private MainWindow vista;
@@ -94,6 +96,12 @@ public class Controlador implements ActionListener, MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		vista.updateSliderLabels();
 		
 	}
 
