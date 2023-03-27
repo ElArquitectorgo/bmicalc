@@ -41,7 +41,7 @@
                                 <addClasspath>true</addClasspath>
                                 <!-- Specifies that all dependencies of our application are found -->
                                 <!-- Configures the main class of the application -->
-                                <mainClass>bmicalc.gui.Main</mainClass>
+                                <mainClass>gui.Main</mainClass>
                             </manifest>
                         </archive>
                     </configuration>

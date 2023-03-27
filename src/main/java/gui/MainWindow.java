@@ -1,30 +1,21 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.EventQueue;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.GridLayout;
-import javax.swing.JSeparator;
 import java.awt.Font;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.SwingConstants;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
-import java.awt.CardLayout;
-import javax.swing.SpringLayout;
 
 public class MainWindow extends JFrame {
 
@@ -57,12 +48,13 @@ public class MainWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public MainWindow() {
+		setMinimumSize(new Dimension(400, 280));
 		setTitle("BMI Calculator");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 300, 250);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 		setContentPane(contentPane);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -70,7 +62,7 @@ public class MainWindow extends JFrame {
 		
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("BMI", null, panel, null);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
 		panel_8 = new JPanel();
 		panel.add(panel_8);
@@ -115,8 +107,11 @@ public class MainWindow extends JFrame {
 		bmiSliderLabel = new JLabel(String.valueOf((double) bmiSlider.getValue() / 100) + " m");
 		panel_4.add(bmiSliderLabel);
 		
+		JPanel panel_10 = new JPanel();
+		panel.add(panel_10);
+
 		bmiHelpButton = new JButton("Help");
-		panel.add(bmiHelpButton);
+		panel_10.add(bmiHelpButton);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Category", null, panel_1, null);
