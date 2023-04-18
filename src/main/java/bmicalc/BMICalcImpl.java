@@ -1,7 +1,9 @@
 package bmicalc;
 
 public class BMICalcImpl implements BMICalc {
+	private static BMICalcImpl instance;
 
+	private BMICalcImpl() {}
 	public double bmi(double mass, double height) {
 		if (mass <= 0 || height <= 0) throw new IllegalArgumentException("No puedes introducir valores nulos o negativos");
 		else if (mass > height * 100) throw new ArithmeticException("Relación masa altura irreal");
@@ -27,6 +29,13 @@ public class BMICalcImpl implements BMICalc {
 
 		boolean hasObesity = (gender == 'M' && waistCircumference > 90 || gender == 'F' && waistCircumference > 80);
 		return hasObesity;
+	}
+
+	public static BMICalcImpl getInstance() {
+		if (instance == null) {
+			instance = new BMICalcImpl();
+		}
+		return instance;
 	}
 
 }

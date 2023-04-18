@@ -12,7 +12,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					BMICalcImpl modelo = new BMICalcImpl();
+					BMICalcImpl modelo = BMICalcImpl.getInstance();
 					MainWindow vista = new MainWindow();
 					Controlador controlador = new Controlador(modelo, vista);
 					vista.registrarControlador(controlador);

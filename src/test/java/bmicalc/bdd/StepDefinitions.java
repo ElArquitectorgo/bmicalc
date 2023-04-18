@@ -22,7 +22,7 @@ public class StepDefinitions {
 	
 	@Given("I have an IMC calculator")
 	public void i_have_a_imc_calculator() {
-		bmiCalc = new BMICalcImpl();
+		bmiCalc = BMICalcImpl.getInstance();
 	}
 	
 	@When("I compute the IMC of {double} and {double}")
