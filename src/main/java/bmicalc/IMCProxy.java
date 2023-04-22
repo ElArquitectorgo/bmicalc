@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class IMCProxy implements IMCHospital, IMCStats {
     private IMCHospital calcHospital;
+    private CalcVersion calcVersion;
     private int numPacientes;
     private List<Double> alturas = new ArrayList<Double>();
     private List<Double> pesos = new ArrayList<Double>();
@@ -53,16 +54,24 @@ public class IMCProxy implements IMCHospital, IMCStats {
     @Override
     public Map<Double, String> imc(double altura, double peso) {
         numPacientes++;
+        altura = calcVersion.convertAltura(altura);
+        peso = calcVersion.convertPeso(peso);
         alturas.add(altura);
         pesos.add(peso);
         Map<Double, String> res = calcHospital.imc(altura, peso);
-        imcs.add(res.keySet().iterator().next());
+        double imc = res.keySet().iterator().next(); 
+        imcs.add(imc);
+        System.out.println(calcVersion.printResult(altura, peso, imc));
         return res;
     }
 
     @Override
     public boolean tieneObesidadAbdominal(char genero, double circunferencia) {
         return calcHospital.tieneObesidadAbdominal(genero, circunferencia);
+    }
+
+    public void setVersion(CalcVersion version) {
+        calcVersion = version;
     }
     
 }
