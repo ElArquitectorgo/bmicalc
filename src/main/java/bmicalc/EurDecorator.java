@@ -2,11 +2,9 @@ package bmicalc;
 
 import java.util.Map;
 
-public class EurDecorator implements IMCHospital {
-    private IMCProxy proxy;
-
+public class EurDecorator extends IMCBaseDecorator {
     public EurDecorator(IMCProxy p) {
-        proxy = p;
+        super(p);
     }
 
     @Override
