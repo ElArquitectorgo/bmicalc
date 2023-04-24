@@ -11,9 +11,7 @@ public class UsaDecorator implements IMCHospital {
 
     @Override
     public Map<Double, String> imc(double altura, double peso) {
-        altura = convertFootToMeters(altura);
-        peso = convertPoundToKg(peso);
-        Map<Double, String> res = proxy.imc(altura, peso);
+        Map<Double, String> res = proxy.imc(convertFootToMeters(altura), convertPoundToKg(peso));
         double imc = res.keySet().iterator().next();
         System.out.println(String.format("The person with height %.2f meters and %.2f kilos of weight has an IMC of %.2f.", altura, peso, imc));
         return res;
