@@ -2,14 +2,14 @@ package bmicalc;
 
 import java.util.Map;
 
-public abstract class IMCBaseDecorator{
+public abstract class IMCBaseDecorator implements IMCHospital{
     protected IMCProxy proxy;
 
     public IMCBaseDecorator(IMCProxy p) {
         proxy = p;
     }
 
-    abstract Map<Double, String> imc(double altura, double peso);
-    abstract boolean tieneObesidadAbdominal(char genero, double circunferencia);
+    public abstract Map<Double, String> imc(double altura, double peso);
+    public abstract boolean tieneObesidadAbdominal(char genero, double circunferencia);
     
 }
