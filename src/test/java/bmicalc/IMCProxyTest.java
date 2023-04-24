@@ -13,9 +13,7 @@ public class IMCProxyTest {
     
     @BeforeEach
     public void setUp() {
-        CalcVersion version = new EurVersion();
         proxy = new IMCProxy(new IMCAdapter(BMICalcImpl.getInstance()));
-        proxy.setVersion(version);
     }
     @Test
     public void imcProxyTest() {
@@ -61,5 +59,14 @@ public class IMCProxyTest {
         imcMedio /= pesos.length;
 
         assertEquals(imcMedio, proxy.imcMedio());
+    }
+
+    @Test
+    public void numPacientesTest() {
+        int n = 5;
+        for (int i = 0; i < n; i++) {
+            proxy.imc(1.5, 50);
+        }
+        assertEquals(n, proxy.numPacientes());
     }
 }
