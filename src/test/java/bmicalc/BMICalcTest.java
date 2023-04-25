@@ -27,15 +27,15 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double[] nums = {15, 18.49};
 		for (int i = 0; i < nums.length; i++) {		
-			String category = calc.category(nums[i]);
-			assertEquals(category, "Underweight");
+			ObesityCategory category = calc.getObesityCategory(nums[i]);
+			assertEquals(category, ObesityCategory.UNDERWEIGHT);
 		}
 	}
 
 	@Test
 	public void underweightNegativeCategoryTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		assertThrows(IllegalArgumentException.class, ()->calc.category(-5));
+		assertThrows(IllegalArgumentException.class, ()->calc.getObesityCategory(-5));
 	}
 
 	@Test
@@ -43,8 +43,8 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double[] nums = {18.5, 20, 24.9, 24.98};
 		for (int i = 0; i < nums.length; i++) {		
-			String category = calc.category(nums[i]);
-			assertEquals(category, "Normal");
+			ObesityCategory category = calc.getObesityCategory(nums[i]);
+			assertEquals(category, ObesityCategory.NORMAL);
 		}
 	}
 
@@ -53,8 +53,8 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double[] nums = {25.0, 27.7, 29.9, 29.95};
 		for (int i = 0; i < nums.length; i++) {		
-			String category = calc.category(nums[i]);
-			assertEquals(category, "Overweight");
+			ObesityCategory category = calc.getObesityCategory(nums[i]);
+			assertEquals(category, ObesityCategory.OVERWEIGHT);
 		}
 	}
 
@@ -63,60 +63,54 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double[] nums = {30, 40, 50};
 		for (int i = 0; i < nums.length; i++) {		
-			String category = calc.category(nums[i]);
-			assertEquals(category, "Obese");
+			ObesityCategory category = calc.getObesityCategory(nums[i]);
+			assertEquals(category, ObesityCategory.OBESE);
 		}
 	}
 
 	@Test
 	public void positiveMaleAbdominalObesityTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		boolean obesity = calc.abdominalObesity(95, 'M');
+		boolean obesity = calc.abdominalObesity(95, Gender.MALE);
 		assertTrue(obesity);
 	}
 
 	@Test
 	public void negativeMaleAbdominalObesityTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		boolean obesity = calc.abdominalObesity(80, 'M');
+		boolean obesity = calc.abdominalObesity(80, Gender.MALE);
 		assertFalse(obesity);
-		obesity = calc.abdominalObesity(90, 'M');
+		obesity = calc.abdominalObesity(90, Gender.MALE);
 		assertFalse(obesity);
 	}
 
 	@Test
 	public void positiveFemaleAbdominalObesityTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		boolean obesity = calc.abdominalObesity(85, 'F');
+		boolean obesity = calc.abdominalObesity(85, Gender.FEMALE);
 		assertTrue(obesity);
 	}
 
 	@Test
 	public void negativeFemaleAbdominalObesityTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		boolean obesity = calc.abdominalObesity(70, 'F');
+		boolean obesity = calc.abdominalObesity(70, Gender.FEMALE);
 		assertFalse(obesity);
-		obesity = calc.abdominalObesity(80, 'F');
+		obesity = calc.abdominalObesity(80, Gender.FEMALE);
 		assertFalse(obesity);
 	}
 
 	@Test
 	public void zeroAbdominalTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(0, 'M'));
+		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(0, Gender.MALE));
 	}
 
 	@Test
 	public void negativeInputAbdominalTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(-10, 'M'));
-		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(-1200, 'F'));
-	}
-
-	@Test
-	public void wrongGenderAbdominalTest() {
-		BMICalcImpl calc = new BMICalcImpl();
-		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(70, 'C'));
+		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(-10, Gender.MALE));
+		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(-1200, Gender.FEMALE));
 	}
 
 	@Test
@@ -124,7 +118,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double mass = 50;
 		double height = 1.50;
-		double bmi = calc.bmi(mass, height);
+		double bmi = calc.calculateBodyMassIndex(mass, height);
 		double expected = mass / Math.pow(height, 2);
 		assertEquals(bmi, expected);
 	}
@@ -134,7 +128,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double mass = -50;
 		double height = 1.50;
-		assertThrows(IllegalArgumentException.class, ()->calc.bmi(mass, height));
+		assertThrows(IllegalArgumentException.class, ()->calc.calculateBodyMassIndex(mass, height));
 	}
 
 	@Test
@@ -142,7 +136,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double mass = 50;
 		double height = -1.50;
-		assertThrows(IllegalArgumentException.class, ()->calc.bmi(mass, height));
+		assertThrows(IllegalArgumentException.class, ()->calc.calculateBodyMassIndex(mass, height));
 	}
 
 	@Test
@@ -150,7 +144,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double mass = 50;
 		double height = 0;
-		assertThrows(IllegalArgumentException.class, ()->calc.bmi(mass, height));
+		assertThrows(IllegalArgumentException.class, ()->calc.calculateBodyMassIndex(mass, height));
 	}
 
 	@Test
@@ -158,7 +152,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double mass = 180;
 		double height = 1.50;
-		assertThrows(ArithmeticException.class, ()->calc.bmi(mass, height));
+		assertThrows(ArithmeticException.class, ()->calc.calculateBodyMassIndex(mass, height));
 	}
 	
 }

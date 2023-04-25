@@ -6,6 +6,9 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import bmicalc.ObesityCategory;
+
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
 import javax.swing.BoxLayout;
@@ -257,9 +260,9 @@ public class MainWindow extends JFrame {
 		bmiResult.setText(String.format("%.2f", result));
 	}
 	
-	public void updateCategoryResult(String result) {
-		categoryResult.setText(result);
-		bmiCategoryLabel.setText(result);
+	public void updateCategoryResult(ObesityCategory result) {
+		categoryResult.setText(result.toString());
+		bmiCategoryLabel.setText(result.toString());
 	}
 	
 	public int getCategoryBMI() {

@@ -2,8 +2,8 @@ package bmicalc.bdd;
 
 import org.junit.jupiter.api.Assertions;
 
-import bmicalc.BMICalc;
 import bmicalc.BMICalcImpl;
+import bmicalc.CardiovascularMetrics;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,7 +11,7 @@ import io.cucumber.java.en.When;
 
 public class StepDefinitions {
 	
-	private BMICalc bmiCalc;
+	private CardiovascularMetrics bmiCalc;
 	private Double result ;
 	
 	@Before
@@ -27,7 +27,7 @@ public class StepDefinitions {
 	
 	@When("I compute the IMC of {double} and {double}")
 	public void i_compute_the_imc_of(Double d1, Double d2) {
-	    result = bmiCalc.bmi(d1, d2);
+	    result = bmiCalc.calculateBodyMassIndex(d1, d2);
 	}
 
 	@Then("The system returns {double}")

@@ -10,6 +10,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import bmicalc.BMICalcImpl;
+import bmicalc.Gender;
+import bmicalc.ObesityCategory;
 
 public class Controlador implements ActionListener, MouseListener, ChangeListener {
 	
@@ -44,14 +46,14 @@ public class Controlador implements ActionListener, MouseListener, ChangeListene
 		vista.updateMassLabel(n);
 		int mass = vista.getMass();
 		double height = vista.getBMISlider();
-		double bmi = modelo.bmi(mass, height);
+		double bmi = modelo.calculateBodyMassIndex(mass, height);
 		vista.setBMIResult(bmi);
-		vista.updateCategoryResult(modelo.category(bmi));
+		vista.updateCategoryResult(modelo.getObesityCategory(bmi));
 	}
 	
 	public void updateCategoryResult() {
 		int bmi = vista.getCategoryBMI();
-		String category = modelo.category(bmi);
+		ObesityCategory category = modelo.getObesityCategory(bmi);
 		vista.updateCategoryResult(category);
 	}
 	
@@ -63,7 +65,8 @@ public class Controlador implements ActionListener, MouseListener, ChangeListene
 	public void updateObesityResult() {
 		char gender = vista.getRadioButton();
 		double waistCircumference = vista.getObesitySlider();
-		boolean result = modelo.abdominalObesity(waistCircumference, gender);
+		Gender genre = (gender == 'M') ? Gender.MALE : Gender.FEMALE;
+		boolean result = modelo.abdominalObesity(waistCircumference, genre);
 		vista.updateObesityResult(result);
 	}
 
