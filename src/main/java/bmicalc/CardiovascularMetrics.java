@@ -23,5 +23,5 @@ public interface CardiovascularMetrics extends MetabolicMetrics {
 	 * @param bmi Body Mass Index (BMI) value.
 	 * @return	  String representing the BMI category.
 	 */
-	public String getObesityCategory(double bmi);
+	public ObesityCategory getObesityCategory(double bmi);
 }

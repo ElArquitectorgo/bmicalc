@@ -8,14 +8,14 @@ public class BMICalcImpl implements CardiovascularMetrics {
 		return mass / Math.pow(height, 2);
 	}
 
-	public String getObesityCategory(double bmi) {
+	public ObesityCategory getObesityCategory(double bmi) {
 		if (bmi <= 0) throw new IllegalArgumentException("BMI no puede ser nulo o negativo");
-		String category = "";
+		ObesityCategory category;
 		
-		if (bmi < 18.5) category = "Underweight";
-		else if (18.5 <= bmi && bmi < 25) category = "Normal";
-		else if (25 <= bmi && bmi < 30) category = "Overweight";
-		else if (bmi >= 30) category = "Obese";
+		if (bmi < 18.5) category = ObesityCategory.UNDERWEIGHT;
+		else if (18.5 <= bmi && bmi < 25) category = ObesityCategory.NORMAL;
+		else if (25 <= bmi && bmi < 30) category = ObesityCategory.OVERWEIGHT;
+		else category = ObesityCategory.OBESE;
 
 		return category;
 		

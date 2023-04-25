@@ -11,6 +11,7 @@ import javax.swing.event.ChangeListener;
 
 import bmicalc.BMICalcImpl;
 import bmicalc.Gender;
+import bmicalc.ObesityCategory;
 
 public class Controlador implements ActionListener, MouseListener, ChangeListener {
 	
@@ -52,7 +53,7 @@ public class Controlador implements ActionListener, MouseListener, ChangeListene
 	
 	public void updateCategoryResult() {
 		int bmi = vista.getCategoryBMI();
-		String category = modelo.getObesityCategory(bmi);
+		ObesityCategory category = modelo.getObesityCategory(bmi);
 		vista.updateCategoryResult(category);
 	}
 	

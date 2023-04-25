@@ -27,8 +27,8 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double[] nums = {15, 18.49};
 		for (int i = 0; i < nums.length; i++) {		
-			String category = calc.getObesityCategory(nums[i]);
-			assertEquals(category, "Underweight");
+			ObesityCategory category = calc.getObesityCategory(nums[i]);
+			assertEquals(category, ObesityCategory.UNDERWEIGHT);
 		}
 	}
 
@@ -43,8 +43,8 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double[] nums = {18.5, 20, 24.9, 24.98};
 		for (int i = 0; i < nums.length; i++) {		
-			String category = calc.getObesityCategory(nums[i]);
-			assertEquals(category, "Normal");
+			ObesityCategory category = calc.getObesityCategory(nums[i]);
+			assertEquals(category, ObesityCategory.NORMAL);
 		}
 	}
 
@@ -53,8 +53,8 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double[] nums = {25.0, 27.7, 29.9, 29.95};
 		for (int i = 0; i < nums.length; i++) {		
-			String category = calc.getObesityCategory(nums[i]);
-			assertEquals(category, "Overweight");
+			ObesityCategory category = calc.getObesityCategory(nums[i]);
+			assertEquals(category, ObesityCategory.OVERWEIGHT);
 		}
 	}
 
@@ -63,8 +63,8 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double[] nums = {30, 40, 50};
 		for (int i = 0; i < nums.length; i++) {		
-			String category = calc.getObesityCategory(nums[i]);
-			assertEquals(category, "Obese");
+			ObesityCategory category = calc.getObesityCategory(nums[i]);
+			assertEquals(category, ObesityCategory.OBESE);
 		}
 	}
 
