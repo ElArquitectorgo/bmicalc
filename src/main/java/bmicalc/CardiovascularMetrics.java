@@ -11,7 +11,7 @@ public interface CardiovascularMetrics extends MetabolicMetrics {
 	 * @param height Height of the person.
 	 * @return 		 The Body Mass Index (BMI) value.
 	 */
-	public double bmi(double mass, double height);
+	public double calculateBodyMassIndex(double mass, double height);
 	
 	/**
 	 * Categorize a person according to the BMI category:
@@ -23,5 +23,5 @@ public interface CardiovascularMetrics extends MetabolicMetrics {
 	 * @param bmi Body Mass Index (BMI) value.
 	 * @return	  String representing the BMI category.
 	 */
-	public String category(double bmi);
+	public String getObesityCategory(double bmi);
 }

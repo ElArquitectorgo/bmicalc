@@ -27,7 +27,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double[] nums = {15, 18.49};
 		for (int i = 0; i < nums.length; i++) {		
-			String category = calc.category(nums[i]);
+			String category = calc.getObesityCategory(nums[i]);
 			assertEquals(category, "Underweight");
 		}
 	}
@@ -35,7 +35,7 @@ public class BMICalcTest {
 	@Test
 	public void underweightNegativeCategoryTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		assertThrows(IllegalArgumentException.class, ()->calc.category(-5));
+		assertThrows(IllegalArgumentException.class, ()->calc.getObesityCategory(-5));
 	}
 
 	@Test
@@ -43,7 +43,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double[] nums = {18.5, 20, 24.9, 24.98};
 		for (int i = 0; i < nums.length; i++) {		
-			String category = calc.category(nums[i]);
+			String category = calc.getObesityCategory(nums[i]);
 			assertEquals(category, "Normal");
 		}
 	}
@@ -53,7 +53,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double[] nums = {25.0, 27.7, 29.9, 29.95};
 		for (int i = 0; i < nums.length; i++) {		
-			String category = calc.category(nums[i]);
+			String category = calc.getObesityCategory(nums[i]);
 			assertEquals(category, "Overweight");
 		}
 	}
@@ -63,7 +63,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double[] nums = {30, 40, 50};
 		for (int i = 0; i < nums.length; i++) {		
-			String category = calc.category(nums[i]);
+			String category = calc.getObesityCategory(nums[i]);
 			assertEquals(category, "Obese");
 		}
 	}
@@ -124,7 +124,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double mass = 50;
 		double height = 1.50;
-		double bmi = calc.bmi(mass, height);
+		double bmi = calc.calculateBodyMassIndex(mass, height);
 		double expected = mass / Math.pow(height, 2);
 		assertEquals(bmi, expected);
 	}
@@ -134,7 +134,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double mass = -50;
 		double height = 1.50;
-		assertThrows(IllegalArgumentException.class, ()->calc.bmi(mass, height));
+		assertThrows(IllegalArgumentException.class, ()->calc.calculateBodyMassIndex(mass, height));
 	}
 
 	@Test
@@ -142,7 +142,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double mass = 50;
 		double height = -1.50;
-		assertThrows(IllegalArgumentException.class, ()->calc.bmi(mass, height));
+		assertThrows(IllegalArgumentException.class, ()->calc.calculateBodyMassIndex(mass, height));
 	}
 
 	@Test
@@ -150,7 +150,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double mass = 50;
 		double height = 0;
-		assertThrows(IllegalArgumentException.class, ()->calc.bmi(mass, height));
+		assertThrows(IllegalArgumentException.class, ()->calc.calculateBodyMassIndex(mass, height));
 	}
 
 	@Test
@@ -158,7 +158,7 @@ public class BMICalcTest {
 		BMICalcImpl calc = new BMICalcImpl();
 		double mass = 180;
 		double height = 1.50;
-		assertThrows(ArithmeticException.class, ()->calc.bmi(mass, height));
+		assertThrows(ArithmeticException.class, ()->calc.calculateBodyMassIndex(mass, height));
 	}
 	
 }

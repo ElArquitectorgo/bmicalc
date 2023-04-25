@@ -2,13 +2,13 @@ package bmicalc;
 
 public class BMICalcImpl implements CardiovascularMetrics {
 
-	public double bmi(double mass, double height) {
+	public double calculateBodyMassIndex(double mass, double height) {
 		if (mass <= 0 || height <= 0) throw new IllegalArgumentException("No puedes introducir valores nulos o negativos");
 		else if (mass > height * 100) throw new ArithmeticException("Relación masa altura irreal");
 		return mass / Math.pow(height, 2);
 	}
 
-	public String category(double bmi) {
+	public String getObesityCategory(double bmi) {
 		if (bmi <= 0) throw new IllegalArgumentException("BMI no puede ser nulo o negativo");
 		String category = "";
 		

@@ -44,14 +44,14 @@ public class Controlador implements ActionListener, MouseListener, ChangeListene
 		vista.updateMassLabel(n);
 		int mass = vista.getMass();
 		double height = vista.getBMISlider();
-		double bmi = modelo.bmi(mass, height);
+		double bmi = modelo.calculateBodyMassIndex(mass, height);
 		vista.setBMIResult(bmi);
-		vista.updateCategoryResult(modelo.category(bmi));
+		vista.updateCategoryResult(modelo.getObesityCategory(bmi));
 	}
 	
 	public void updateCategoryResult() {
 		int bmi = vista.getCategoryBMI();
-		String category = modelo.category(bmi);
+		String category = modelo.getObesityCategory(bmi);
 		vista.updateCategoryResult(category);
 	}
 	
