@@ -10,6 +10,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import bmicalc.BMICalcImpl;
+import bmicalc.Gender;
 
 public class Controlador implements ActionListener, MouseListener, ChangeListener {
 	
@@ -63,7 +64,8 @@ public class Controlador implements ActionListener, MouseListener, ChangeListene
 	public void updateObesityResult() {
 		char gender = vista.getRadioButton();
 		double waistCircumference = vista.getObesitySlider();
-		boolean result = modelo.abdominalObesity(waistCircumference, gender);
+		Gender genre = (gender == 'M') ? Gender.MALE : Gender.FEMALE;
+		boolean result = modelo.abdominalObesity(waistCircumference, genre);
 		vista.updateObesityResult(result);
 	}
 

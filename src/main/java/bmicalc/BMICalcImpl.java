@@ -21,11 +21,10 @@ public class BMICalcImpl implements CardiovascularMetrics {
 		
 	}
 
-	public boolean abdominalObesity(double waistCircumference, char gender) {
+	public boolean abdominalObesity(double waistCircumference, Gender gender) {
 		if (waistCircumference <= 0) throw new IllegalArgumentException("No puedes introducir valores nulos o negativos");
-		if (gender != 'M' && gender != 'F') throw new IllegalArgumentException("Género mal especificado, se esperaba 'M' o 'F'");
 
-		boolean hasObesity = (gender == 'M' && waistCircumference > 90 || gender == 'F' && waistCircumference > 80);
+		boolean hasObesity = (gender == Gender.MALE && waistCircumference > 90 || gender == Gender.FEMALE && waistCircumference > 80);
 		return hasObesity;
 	}
 

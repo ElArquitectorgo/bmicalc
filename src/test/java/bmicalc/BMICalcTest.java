@@ -71,52 +71,46 @@ public class BMICalcTest {
 	@Test
 	public void positiveMaleAbdominalObesityTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		boolean obesity = calc.abdominalObesity(95, 'M');
+		boolean obesity = calc.abdominalObesity(95, Gender.MALE);
 		assertTrue(obesity);
 	}
 
 	@Test
 	public void negativeMaleAbdominalObesityTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		boolean obesity = calc.abdominalObesity(80, 'M');
+		boolean obesity = calc.abdominalObesity(80, Gender.MALE);
 		assertFalse(obesity);
-		obesity = calc.abdominalObesity(90, 'M');
+		obesity = calc.abdominalObesity(90, Gender.MALE);
 		assertFalse(obesity);
 	}
 
 	@Test
 	public void positiveFemaleAbdominalObesityTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		boolean obesity = calc.abdominalObesity(85, 'F');
+		boolean obesity = calc.abdominalObesity(85, Gender.FEMALE);
 		assertTrue(obesity);
 	}
 
 	@Test
 	public void negativeFemaleAbdominalObesityTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		boolean obesity = calc.abdominalObesity(70, 'F');
+		boolean obesity = calc.abdominalObesity(70, Gender.FEMALE);
 		assertFalse(obesity);
-		obesity = calc.abdominalObesity(80, 'F');
+		obesity = calc.abdominalObesity(80, Gender.FEMALE);
 		assertFalse(obesity);
 	}
 
 	@Test
 	public void zeroAbdominalTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(0, 'M'));
+		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(0, Gender.MALE));
 	}
 
 	@Test
 	public void negativeInputAbdominalTest() {
 		BMICalcImpl calc = new BMICalcImpl();
-		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(-10, 'M'));
-		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(-1200, 'F'));
-	}
-
-	@Test
-	public void wrongGenderAbdominalTest() {
-		BMICalcImpl calc = new BMICalcImpl();
-		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(70, 'C'));
+		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(-10, Gender.MALE));
+		assertThrows(IllegalArgumentException.class, ()->calc.abdominalObesity(-1200, Gender.FEMALE));
 	}
 
 	@Test
