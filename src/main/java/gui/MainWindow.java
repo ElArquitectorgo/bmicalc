@@ -215,15 +215,11 @@ public class MainWindow extends JFrame {
 		categorySlider.setName("categorySlider");
 		categorySlider.addMouseListener(controlador);
 		categorySlider.addChangeListener(controlador);
-		//categoryHelpButton.addActionListener(controlador);
-		//categoryHelpButton.setActionCommand("categoryHelp");
 		
 		// Abdominal
 		obesitySlider.addMouseListener(controlador);
 		obesitySlider.setName("obesitySlider");
 		obesitySlider.addChangeListener(controlador);
-		//obesityHelpButton.addActionListener(controlador);
-		//obesityHelpButton.setActionCommand("abdominalHelp");
 	}
 	
 	public void updateMassLabel(int n) {
