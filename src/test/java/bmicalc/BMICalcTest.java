@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class BMICalcTest {
+class BMICalcTest {
 	/*   - underweight for a bmi below 18.5
 	 *   - normal for a bmi between 18.5 and 24.9
 	 *   - overweight for a bmi between 25.0 and 29.9
@@ -20,7 +20,7 @@ public class BMICalcTest {
 		double[] nums = {15, 18.49};
 		for (int i = 0; i < nums.length; i++) {		
 			ObesityCategory category = calc.getObesityCategory(nums[i]);
-			assertEquals(category, ObesityCategory.UNDERWEIGHT);
+			assertEquals(ObesityCategory.UNDERWEIGHT, category);
 		}
 	}
 
@@ -36,7 +36,7 @@ public class BMICalcTest {
 		double[] nums = {18.5, 20, 24.9, 24.98};
 		for (int i = 0; i < nums.length; i++) {		
 			ObesityCategory category = calc.getObesityCategory(nums[i]);
-			assertEquals(category, ObesityCategory.NORMAL);
+			assertEquals(ObesityCategory.NORMAL, category);
 		}
 	}
 
@@ -46,7 +46,7 @@ public class BMICalcTest {
 		double[] nums = {25.0, 27.7, 29.9, 29.95};
 		for (int i = 0; i < nums.length; i++) {		
 			ObesityCategory category = calc.getObesityCategory(nums[i]);
-			assertEquals(category, ObesityCategory.OVERWEIGHT);
+			assertEquals(ObesityCategory.OVERWEIGHT, category);
 		}
 	}
 
@@ -56,7 +56,7 @@ public class BMICalcTest {
 		double[] nums = {30, 40, 50};
 		for (int i = 0; i < nums.length; i++) {		
 			ObesityCategory category = calc.getObesityCategory(nums[i]);
-			assertEquals(category, ObesityCategory.OBESE);
+			assertEquals(ObesityCategory.OBESE, category);
 		}
 	}
 
@@ -112,7 +112,7 @@ public class BMICalcTest {
 		double height = 1.50;
 		double bmi = calc.calculateBodyMassIndex(mass, height);
 		double expected = mass / Math.pow(height, 2);
-		assertEquals(bmi, expected);
+		assertEquals(expected, bmi);
 	}
 
 	@Test
