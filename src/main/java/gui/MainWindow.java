@@ -185,7 +185,6 @@ public class MainWindow extends JFrame {
 		obesitySliderLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		panel_7.add(obesitySliderLabel);
 		
-		//pack();
 		setVisible(true);
 	}
 
@@ -225,11 +224,11 @@ public class MainWindow extends JFrame {
 	public void updateMassLabel(int n) {
 		try {
 			int mass = Integer.parseInt(massLabel.getText().split(" ")[0]);
-			if (mass + n < 0) throw new Exception("La masa no puede ser negativa");
+			if (mass + n < 0) throw new ArithmeticException("La masa no puede ser negativa");
 			mass += n;
 			massLabel.setText(String.valueOf(mass) + " kg");
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.err.println(e.getMessage());
 		}
 	}
 	
