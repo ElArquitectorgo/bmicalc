@@ -85,9 +85,9 @@ public class Controlador implements ActionListener, MouseListener, ChangeListene
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		String component = e.getComponent().getName();
-		if (component == "bmiSlider") updateBMIResult(0);
-		else if (component == "categorySlider") updateCategoryResult();
-		else if (component == "obesitySlider") updateObesityResult();
+		if (component.equals("bmiSlider")) updateBMIResult(0);
+		else if (component.equals("categorySlider")) updateCategoryResult();
+		else if (component.equals("obesitySlider")) updateObesityResult();
 	}
 
 	@Override

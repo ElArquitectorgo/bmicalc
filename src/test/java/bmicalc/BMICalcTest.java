@@ -5,17 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class BMICalcTest {
-	
-	@Test
-	@DisplayName("Example Test Method.")
-	public void bmi() {
-		assertEquals(true, true);
-	}
-
 	/*   - underweight for a bmi below 18.5
 	 *   - normal for a bmi between 18.5 and 24.9
 	 *   - overweight for a bmi between 25.0 and 29.9

@@ -238,10 +238,10 @@ public class MainWindow extends JFrame {
 	}
 	
 	public void setRadioButton(String button) {
-		if (button == "male") {
+		if (button.equals("male")) {
 			maleButton.setSelected(true);
 			femaleButton.setSelected(false);
-		} else if (button == "female") {
+		} else if (button.equals("female")) {
 			maleButton.setSelected(false);
 			femaleButton.setSelected(true);
 		}
