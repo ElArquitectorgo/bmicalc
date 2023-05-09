@@ -72,12 +72,12 @@ public class Controlador implements ActionListener, MouseListener, ChangeListene
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
+		// Tengo que poner algo para el bad smell
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		
+		// Tengo que poner algo para el bad smell
 	}
 
 	@Override
@@ -90,12 +90,12 @@ public class Controlador implements ActionListener, MouseListener, ChangeListene
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		
+		// Tengo que poner algo para el bad smell
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		
+		// Tengo que poner algo para el bad smell
 	}
 
 	@Override
